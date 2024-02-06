@@ -9,7 +9,7 @@ class App extends Component {
     return (
       <>
         <NavBar />
-        <div className="container">
+        <div className="container-fluid">
           <Switch>
             <Route path="/pals" component={Pals} />
             <Redirect from="/" to="/pals" />

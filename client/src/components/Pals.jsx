@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getPals } from "../fakeServices/fakePals";
+import { getPalData } from "../services/palService";
 import "bootstrap/dist/css/bootstrap.css";
 
 class Pals extends Component {
@@ -7,8 +7,8 @@ class Pals extends Component {
     pals: [],
   };
 
-  componentDidMount() {
-    const pals = getPals();
+  async componentDidMount() {
+    const pals = await getPalData();
     this.setState({ pals });
   }
 
@@ -31,30 +31,41 @@ class Pals extends Component {
   render() {
     return (
       <div>
-        <table className="table table-dark table-hover my-5">
+        <table className="table table-dark table-hover">
           <thead>
             <tr>
+              <th></th>
               <th>Pal ID</th>
               <th>Name</th>
               <th>Count</th>
+              <th></th>
               <th></th>
             </tr>
           </thead>
           <tbody>
             {this.state.pals.map((pal) => (
               <tr key={pal.palId}>
-                <td>{pal.palId}</td>
+                <td>
+                  <img
+                    src={pal.imageWiki}
+                    alt={pal.name}
+                    style={{ width: "50px" }}
+                  />
+                </td>
+                <td>{pal.id}</td>
                 <td>{pal.name}</td>
                 <td>{pal.count}</td>
                 <td>
                   <button
-                    className="btn btn-pill btn-primary mx-2"
+                    className="btn btn-pill btn-primary"
                     onClick={() => this.handleCountIncrease(pal)}
                   >
                     +
                   </button>
+                </td>
+                <td>
                   <button
-                    className="btn btn-pill btn-danger mx-2"
+                    className="btn btn-pill btn-danger"
                     onClick={() => this.handleCountDecrease(pal)}
                   >
                     -

@@ -15,4 +15,6 @@ mongoose
 app.use(express.json());
 app.use("/pals", pals);
 
-app.listen(PORT, () => console.log(`Server is running on port ${PORT}...`));
+app.listen(PORT || 3001, () =>
+  console.log(`Server is running on port ${PORT}...`)
+);
