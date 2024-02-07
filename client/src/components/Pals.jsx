@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getPalData } from "../services/palService";
+import { getPalData, getPalCount } from "../services/palService";
 import "bootstrap/dist/css/bootstrap.css";
 
 class Pals extends Component {
@@ -44,7 +44,7 @@ class Pals extends Component {
           </thead>
           <tbody>
             {this.state.pals.map((pal) => (
-              <tr key={pal.palId}>
+              <tr key={pal.key}>
                 <td>
                   <img
                     src={pal.imageWiki}
@@ -54,7 +54,7 @@ class Pals extends Component {
                 </td>
                 <td>{pal.id}</td>
                 <td>{pal.name}</td>
-                <td>{pal.count}</td>
+                <td>{getPalCount(pal.id)}</td>
                 <td>
                   <button
                     className="btn btn-pill btn-primary"
