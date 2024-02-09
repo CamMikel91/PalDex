@@ -71,4 +71,36 @@ router.post("/login", async (req, res) => {
 });
 // ------------------------------------------------------------
 
+// Update a user
+router.put("/:id", async (req, res) => {
+  // Validate the request body
+  const { error } = validateUser(req.body);
+  if (error) return res.status(400).send(error.details[0].message);
+
+  // Update the user
+  const user = await User.findByIdAndUpdate(
+    req.params.id,
+    {
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password,
+      pals: req.body.pals,
+    },
+    { new: true }
+  );
+
+  // Send the updated user back to the client
+  res.send(user);
+});
+
+// ------------------------------------------------------------
+// Get a user's pals
+router.get("/:id", async (req, res) => {
+  // Find the user
+  const user = await User.findById(req.params.id);
+
+  // Send the user's pals back to the client
+  res.send(user.pals);
+});
+
 module.exports = router;

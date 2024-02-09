@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
+import "./css/navBar.css";
 
 class NavBar extends Component {
   render() {
@@ -12,11 +13,13 @@ class NavBar extends Component {
         </Link>
         <div className="navbar" id="navbarNav">
           <ul className="navbar-nav">
-            <li className="nav-item">
-              <Link className="nav-link" to="/pals">
-                Pals
-              </Link>
-            </li>
+            {user && (
+              <li className="nav-item">
+                <Link className="nav-link" to="/pals">
+                  Pals
+                </Link>
+              </li>
+            )}
             {!user && (
               <>
                 <li>

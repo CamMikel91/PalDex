@@ -1,0 +1,23 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+tr {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.btn-group .btn {
+  border-color: white;
+}
+
+.increaseButton {
+  background-color: #4caf50;
+  color: white;
+}
+
+.decreaseButton {
+  padding: 5px 15px;
+  margin-right: 10px;
+}

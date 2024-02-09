@@ -21,18 +21,28 @@ class App extends Component {
   render() {
     const { user } = this.state;
     return (
-      <>
+      <div className="container-fluid">
         <NavBar user={user} />
-        <div className="container-fluid">
-          <Switch>
-            <Route path="/users/register" component={Register} />
-            <Route path="/users/login" component={Login} />
-            <Route path="/users/logout" component={Logout} />
-            <Route path="/pals" component={Pals} />
-            <Redirect from="/" to="/pals" />
-          </Switch>
-        </div>
-      </>
+        <Switch>
+          <Route path="/users/register" component={Register} />
+          <Route
+            path="/users/login"
+            render={(props) => {
+              if (user) return <Redirect to="/pals" />;
+              return <Login {...props} />;
+            }}
+          />
+          <Route path="/users/logout" component={Logout} />
+          <Route
+            path="/pals"
+            render={(props) => {
+              if (!user) return <Redirect to="/users/login" />;
+              return <Pals {...props} user={user} />;
+            }}
+          />
+          <Redirect from="/" to="/pals" />
+        </Switch>
+      </div>
     );
   }
 }

@@ -3,11 +3,29 @@ const Joi = require("joi");
 const jwt = require("jsonwebtoken");
 const config = require("config");
 
+// user = {
+//   name: "John Doe",
+//   email: "email@email.com",
+//   password: "password",
+//   pals: [
+//     {
+//       palId: 1,
+//       count: 0
+//     }
+//   ]
+// }
+
 // Define the schema
 const userSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true },
   password: { type: String, required: true },
+  pals: [
+    {
+      id: { type: Number, required: true },
+      count: { type: Number, required: true },
+    },
+  ],
 });
 
 // Define the custom method to generate an auth token
@@ -30,7 +48,14 @@ const User = mongoose.model("User", userSchema);
 const schema = Joi.object({
   name: Joi.string().required(),
   email: Joi.string().required(),
-  password: Joi.string().required(),
+  password: Joi.string(),
+  pals: Joi.array().items(
+    Joi.object({
+      _id: Joi.string(),
+      id: Joi.number(),
+      count: Joi.number(),
+    })
+  ),
 });
 
 function validateUser(user) {
