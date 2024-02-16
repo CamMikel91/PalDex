@@ -27,7 +27,6 @@ router.post("/register", async (req, res) => {
   // Save the user to the database
   try {
     await user.save();
-    // res.send(user);
   } catch (err) {
     res.status(500).send("Something went wrong...");
   }
