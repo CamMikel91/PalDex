@@ -82,6 +82,9 @@ class Pals extends Component {
   render() {
     return (
       <div>
+        <div id="tableTitle" className="bg-dark mb-0 mt-4 p-3">
+          <h1 className="ms-3">PalCounter</h1>
+        </div>
         <table className="table table-dark table-hover">
           <thead>
             <tr>

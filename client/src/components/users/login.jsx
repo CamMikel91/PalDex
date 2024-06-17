@@ -2,6 +2,7 @@ import React from "react";
 import Joi from "joi-browser";
 import Form from "../common/form";
 import { login } from "../../services/authService";
+import "../css/login.css";
 
 class Login extends Form {
   state = {
@@ -31,7 +32,7 @@ class Login extends Form {
 
   render() {
     return (
-      <div id="login">
+      <div id="login" className="container pt-5">
         <h1 className="text-center mt-4">Login</h1>
         <form onSubmit={this.handleSubmit} className="container">
           {this.renderInput("email", "Email", "email")}

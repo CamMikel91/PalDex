@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Joi from "joi-browser";
 import Input from "./input";
 import Select from "./select";
-// import "./css/form.css";
 
 class Form extends Component {
   state = {
@@ -54,7 +53,8 @@ class Form extends Component {
     return (
       <button
         type="submit"
-        className="btn mt-4 btn-info"
+        id="loginBtn"
+        className="btn mt-4"
         disabled={this.validate()}
       >
         {label}
@@ -79,7 +79,6 @@ class Form extends Component {
 
   renderSelect(name, label, options) {
     const { data, errors } = this.state;
-    // console.log(data[name]);
 
     return (
       <Select

@@ -1,0 +1,10 @@
+.container-fluid {
+  align-items: center;
+  max-width: 800px;
+  margin: auto;
+}
+
+body {
+  background-image: url("../public/grass.jpg");
+  color: white;
+}

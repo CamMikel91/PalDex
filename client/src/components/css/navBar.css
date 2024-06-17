@@ -8,3 +8,20 @@
   justify-content: space-between;
   align-items: center;
 }
+
+.navbar-brand {
+  color: white;
+}
+
+.navbar {
+  border-bottom: none;
+  color: white;
+}
+
+.navbar-nav {
+  color: white;
+}
+
+.nav-link {
+  color: white;
+}
